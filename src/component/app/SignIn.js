@@ -64,7 +64,7 @@ function SignIn() {
             alert("필수 입력 칸을 입력해주세요.");
         } else {
             try {
-                const response = await axios.post(`http://${process.env.REACT_APP_API_URL}/member/join`, data);
+                const response = await axios.post(`${process.env.REACT_APP_API_URL}/member/join`, data);
                 if (response.status === 200 || response.status === 201) {
                     alert("회원가입 성공");
                     navigate("/");
