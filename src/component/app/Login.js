@@ -33,7 +33,7 @@ function Login() {
 
         try {
             const response = await axios.post(
-                "http://${process.env.REACT_APP_API_URL}/member/login",
+                `http://${process.env.REACT_APP_API_URL}/member/login`,
                 data
             );
 

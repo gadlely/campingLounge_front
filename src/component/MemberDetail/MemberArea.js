@@ -48,7 +48,7 @@ function MemberArea({user, setUser}) {
         }
 
         try {
-            await axios.post("http://${process.env.REACT_APP_API_URL}/chat/start", {
+            await axios.post(`http://${process.env.REACT_APP_API_URL}/chat/start`, {
                 userId: loginUserId,
                 targetId: updatedTargetId
             });

@@ -76,7 +76,7 @@ function MemberUpdate({setProfileChange}) {
         const formData = new FormData();
         formData.append("file", file);
         try {
-            await axios.post("http://${process.env.REACT_APP_API_URL}/member/upload", formData, { headers });
+            await axios.post(`http://${process.env.REACT_APP_API_URL}/member/upload`, formData, { headers });
         } catch (error) {
             alert("파일 업로드 실패: " + error);
         }
@@ -87,7 +87,7 @@ function MemberUpdate({setProfileChange}) {
 
         const data = { name, tel, password, postcode, address, address_detail, profile: file ? true : !!profilePath };
         try {
-            const response = await axios.put("http://${process.env.REACT_APP_API_URL}/member/update", data, { headers });
+            const response = await axios.put(`http://${process.env.REACT_APP_API_URL}/member/update`, data, { headers });
             if (file) await uploadFile();
 
             if (response.status === 200 || response.status === 201) {
@@ -105,7 +105,7 @@ function MemberUpdate({setProfileChange}) {
     const userUnable = async () => {
         try {
             if(window.confirm("정말 탈퇴하시겠습니까?")){
-                await axios.get("http://${process.env.REACT_APP_API_URL}/member/unable", {headers: headers});
+                await axios.get(`http://${process.env.REACT_APP_API_URL}/member/unable`, {headers: headers});
                 setHeaders(null);
                 setAuth(null);
                 localStorage.removeItem("CL_access_token");

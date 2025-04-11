@@ -17,8 +17,8 @@ const TossPayment = () => {
                     orderId: `${randomId}`, //문자열 처리를 위한 ``사용
                     orderName: "캠핑라운지", //결제 이름(여러건일 경우 복수처리)
                     customerName: '테스트', //판매자, 판매처 이름
-                    successUrl: "http://localhost:3000/success",
-                    failUrl: "http://localhost:3000/fail",
+                    successUrl: `http://localhost:3000/success`,
+                    failUrl: `http://localhost:3000/fail`,
                 })
             });
         }
