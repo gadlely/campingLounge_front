@@ -15,7 +15,7 @@ function ReviewArea() {
   const fetchReviews = async () => {
     try {
       const response = await axios.get(
-        'http://localhost:8080/review/list?page=0&size=5' // 리뷰 리스트 API 요청
+        'http://${process.env.REACT_APP_API_URL}/review/list?page=0&size=5' // 리뷰 리스트 API 요청
       );
 
       let filteredReviews = [];

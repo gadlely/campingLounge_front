@@ -30,7 +30,7 @@ function MemberUpdate({setProfileChange}) {
             "Authorization": `Bearer ${localStorage.getItem("CL_access_token")}`
         });
 
-        axios.get("http://localhost:8080/member/me", { headers })
+        axios.get(`http://${process.env.REACT_APP_API_URL}/member/me`, { headers })
             .then(response => {
                 setUser(response.data);
                 setName(response.data.name);
@@ -47,9 +47,9 @@ function MemberUpdate({setProfileChange}) {
 
     useEffect(() => {
         if (user && user.profile) {
-            axios.get(`http://localhost:8080/member/getProfile/${user.id}`, { headers })
+            axios.get(`http://${process.env.REACT_APP_API_URL}/member/getProfile/${user.id}`, { headers })
                 .then(response => {
-                    setProfilePath("http://localhost:8080/uploads/" + response.data);
+                    setProfilePath(`${process.env.REACT_APP_API_URL}/uploads/` + response.data);
                 })
                 .catch(error => {
                     console.error("프로필 경로를 가져오는 중 오류 발생:", error);
@@ -76,7 +76,7 @@ function MemberUpdate({setProfileChange}) {
         const formData = new FormData();
         formData.append("file", file);
         try {
-            await axios.post("http://localhost:8080/member/upload", formData, { headers });
+            await axios.post("http://${process.env.REACT_APP_API_URL}/member/upload", formData, { headers });
         } catch (error) {
             alert("파일 업로드 실패: " + error);
         }
@@ -87,7 +87,7 @@ function MemberUpdate({setProfileChange}) {
 
         const data = { name, tel, password, postcode, address, address_detail, profile: file ? true : !!profilePath };
         try {
-            const response = await axios.put("http://localhost:8080/member/update", data, { headers });
+            const response = await axios.put("http://${process.env.REACT_APP_API_URL}/member/update", data, { headers });
             if (file) await uploadFile();
 
             if (response.status === 200 || response.status === 201) {
@@ -105,7 +105,7 @@ function MemberUpdate({setProfileChange}) {
     const userUnable = async () => {
         try {
             if(window.confirm("정말 탈퇴하시겠습니까?")){
-                await axios.get("http://localhost:8080/member/unable", {headers: headers});
+                await axios.get("http://${process.env.REACT_APP_API_URL}/member/unable", {headers: headers});
                 setHeaders(null);
                 setAuth(null);
                 localStorage.removeItem("CL_access_token");

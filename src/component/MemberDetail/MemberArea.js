@@ -48,7 +48,7 @@ function MemberArea({user, setUser}) {
         }
 
         try {
-            await axios.post("http://localhost:8080/chat/start", {
+            await axios.post("http://${process.env.REACT_APP_API_URL}/chat/start", {
                 userId: loginUserId,
                 targetId: updatedTargetId
             });
@@ -67,7 +67,7 @@ function MemberArea({user, setUser}) {
             "Authorization": `Bearer ${localStorage.getItem("CL_access_token")}`
         });
 
-        axios.get(`http://localhost:8080/member/user/${memberId.memberId}`, {headers: headers})
+        axios.get(`http://${process.env.REACT_APP_API_URL}/member/user/${memberId.memberId}`, {headers: headers})
             .then(response => {
                 setUser(response.data);
                 if (response.data.email !== localStorage.getItem("email")) {
@@ -96,7 +96,7 @@ function MemberArea({user, setUser}) {
     // 프로필 경로 가져오기
     useEffect(() => {
         if (user && user.profile) {
-            axios.get(`http://localhost:8080/member/getProfile/${user.id}`, {headers: headers})
+            axios.get(`http://${process.env.REACT_APP_API_URL}/member/getProfile/${user.id}`, {headers: headers})
                 .then(response => {
                     setProfilePath(response.data);
                 })
@@ -110,7 +110,7 @@ function MemberArea({user, setUser}) {
         <div className="wrap">
             <div className="profile-area">
                 <div className="profile">
-                    {user.profile ? <img src={"http://localhost:8080/uploads/" + profilePath} alt="프로필 이미지" style={{display:"flex", borderRadius:"50%"}}/>  : user.profile_url ? <img src={user.profile_url} alt="프로필 이미지" style={{display:"flex", borderRadius:"50%"}}/> : ""}
+                    {user.profile ? <img src={`${process.env.REACT_APP_API_URL}/uploads/` + profilePath} alt="프로필 이미지" style={{display:"flex", borderRadius:"50%"}}/>  : user.profile_url ? <img src={user.profile_url} alt="프로필 이미지" style={{display:"flex", borderRadius:"50%"}}/> : ""}
                 </div>
                 <div className="name-wrap">
                     <p className="name">{user.name ? user.name : "GUEST"}</p>

@@ -74,7 +74,7 @@ function Header({adminMode, mainPage,setMainLayoutChange, profileChange, setProf
     useEffect( () => {
 
         if(memberId) {
-            axios.get(`http://localhost:8080/member/user/${memberId}`, {headers: headers})
+            axios.get(`http://${process.env.REACT_APP_API_URL}/member/user/${memberId}`, {headers: headers})
                 .then(response => {
                     setUser(response.data);
                 })
@@ -91,7 +91,7 @@ function Header({adminMode, mainPage,setMainLayoutChange, profileChange, setProf
     useEffect( () => {
 
         if (user && user.profile) {
-            axios.get(`http://localhost:8080/member/getProfile/${memberId}`, {headers: headers})
+            axios.get(`http://${process.env.REACT_APP_API_URL}/member/getProfile/${memberId}`, {headers: headers})
                 .then(response => {
                     setProfilePath(response.data);
                     setProfileChange(false);
@@ -139,7 +139,7 @@ function Header({adminMode, mainPage,setMainLayoutChange, profileChange, setProf
                                  : null
                              }>
                                  {user.profile ?
-                                 <img src={"http://localhost:8080/uploads/" + profilePath} alt="프로필 이미지"
+                                 <img src={`${process.env.REACT_APP_API_URL}/uploads/` + profilePath} alt="프로필 이미지"
                                       style={{filter: "grayscale(0) invert(0)", width: "3rem", height: "3rem", borderRadius: "50%",}}/>
                                  : user.profile_url ?
                                      <img src={user.profile_url} alt="프로필 이미지"

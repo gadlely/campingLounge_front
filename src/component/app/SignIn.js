@@ -26,7 +26,7 @@ function SignIn() {
         const data = { email };
 
         try {
-            const isEmailExist = await axios.post("http://localhost:8080/member/emailDuplicate", data);
+            const isEmailExist = await axios.post(`${process.env.REACT_APP_API_URL}/member/emailDuplicate`, data);
             if (!isEmailExist.data) {
                 setIsValid(true);
                 alert("사용 가능한 이메일 입니다.");
@@ -64,7 +64,7 @@ function SignIn() {
             alert("필수 입력 칸을 입력해주세요.");
         } else {
             try {
-                const response = await axios.post("http://localhost:8080/member/join", data);
+                const response = await axios.post("http://${process.env.REACT_APP_API_URL}/member/join", data);
                 if (response.status === 200 || response.status === 201) {
                     alert("회원가입 성공");
                     navigate("/");

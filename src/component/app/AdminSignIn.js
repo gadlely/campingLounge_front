@@ -17,7 +17,7 @@ function AdminSignIn() {
 
     const emailDuplicate = async () => {
         try {
-            const response = await axios.post("http://localhost:8080/member/emailDuplicate", { email });
+            const response = await axios.post("http://${process.env.REACT_APP_API_URL}/member/emailDuplicate", { email });
             if (!response.data) {
                 setIsValid(true);
                 alert("사용 가능한 이메일입니다.");
@@ -36,7 +36,7 @@ function AdminSignIn() {
             securityKey: securityKey,
         }
         try {
-            const response = await axios.post("http://localhost:8080/member/checkKey", data);
+            const response = await axios.post("http://${process.env.REACT_APP_API_URL}/member/checkKey", data);
             return response.data;
         } catch (e) {
             alert("서버와의 연결 오류 : " + e.response.data.message);
@@ -60,7 +60,7 @@ function AdminSignIn() {
         const data = { name, password, email, gender, tel, join_date: today, role: "ADMIN", securityKey };
 
         try {
-            const response = await axios.post("http://localhost:8080/member/join", data);
+            const response = await axios.post("http://${process.env.REACT_APP_API_URL}/member/join", data);
             if (response.status === 200 || response.status === 201) {
                 alert("관리자 등록 완료");
                 navigate('/');
