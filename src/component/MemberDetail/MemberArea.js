@@ -48,7 +48,7 @@ function MemberArea({user, setUser}) {
         }
 
         try {
-            await axios.post(`http://${process.env.REACT_APP_API_URL}/chat/start`, {
+            await axios.post(`${process.env.REACT_APP_API_URL}/chat/start`, {
                 userId: loginUserId,
                 targetId: updatedTargetId
             });
@@ -67,7 +67,7 @@ function MemberArea({user, setUser}) {
             "Authorization": `Bearer ${localStorage.getItem("CL_access_token")}`
         });
 
-        axios.get(`http://${process.env.REACT_APP_API_URL}/member/user/${memberId.memberId}`, {headers: headers})
+        axios.get(`${process.env.REACT_APP_API_URL}/member/user/${memberId.memberId}`, {headers: headers})
             .then(response => {
                 setUser(response.data);
                 if (response.data.email !== localStorage.getItem("email")) {
@@ -96,7 +96,7 @@ function MemberArea({user, setUser}) {
     // 프로필 경로 가져오기
     useEffect(() => {
         if (user && user.profile) {
-            axios.get(`http://${process.env.REACT_APP_API_URL}/member/getProfile/${user.id}`, {headers: headers})
+            axios.get(`${process.env.REACT_APP_API_URL}/member/getProfile/${user.id}`, {headers: headers})
                 .then(response => {
                     setProfilePath(response.data);
                 })

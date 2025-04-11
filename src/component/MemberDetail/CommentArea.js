@@ -16,7 +16,7 @@ function CommentArea() {
   const fetchCommentData = async (page = 0) => {
     try {
       const response = await axios.get(
-        `http://${process.env.REACT_APP_API_URL}/review/comments/list?page=${page}&size=5&memberId=${memberId}`
+        `${process.env.REACT_APP_API_URL}/review/comments/list?page=${page}&size=5&memberId=${memberId}`
       );
       setCommentList(response.data.content); // 댓글 목록 업데이트
       setTotalPages(response.data.totalPages); // 전체 페이지 수 업데이트
@@ -42,7 +42,7 @@ function CommentArea() {
 
     try {
       await axios.delete(
-        `http://${process.env.REACT_APP_API_URL}/review/${reviewId}/comments/delete/${commentId}`
+        `${process.env.REACT_APP_API_URL}/review/${reviewId}/comments/delete/${commentId}`
       );
       alert('댓글이 삭제되었습니다.');
       fetchCommentData(page); // 삭제 후 댓글 목록 새로 불러오기

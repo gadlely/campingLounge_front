@@ -18,7 +18,7 @@ function GoogleLoginBtn() {
         const token = response.credential;
 
         try {
-            const response = await axios.post(`http://${process.env.REACT_APP_API_URL}/member/auth/google`, {token: token});
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/member/auth/google`, {token: token});
 
             if (response.status === 200 || response.status === 201) {
                 alert("로그인 성공");

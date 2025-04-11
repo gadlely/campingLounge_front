@@ -74,7 +74,7 @@ function Header({adminMode, mainPage,setMainLayoutChange, profileChange, setProf
     useEffect( () => {
 
         if(memberId) {
-            axios.get(`http://${process.env.REACT_APP_API_URL}/member/user/${memberId}`, {headers: headers})
+            axios.get(`${process.env.REACT_APP_API_URL}/member/user/${memberId}`, {headers: headers})
                 .then(response => {
                     setUser(response.data);
                 })
@@ -91,7 +91,7 @@ function Header({adminMode, mainPage,setMainLayoutChange, profileChange, setProf
     useEffect( () => {
 
         if (user && user.profile) {
-            axios.get(`http://${process.env.REACT_APP_API_URL}/member/getProfile/${memberId}`, {headers: headers})
+            axios.get(`${process.env.REACT_APP_API_URL}/member/getProfile/${memberId}`, {headers: headers})
                 .then(response => {
                     setProfilePath(response.data);
                     setProfileChange(false);

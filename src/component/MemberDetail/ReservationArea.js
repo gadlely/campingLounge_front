@@ -16,7 +16,7 @@ function ReservationArea() {
   const reservationCancel = async (reservationId) => {
     try {
       await axios.delete(
-        `http://${process.env.REACT_APP_API_URL}/member/${memberId}/reservation/delete/${reservationId}`,
+        `${process.env.REACT_APP_API_URL}/member/${memberId}/reservation/delete/${reservationId}`,
         { headers: headers }
       );
       setRefresh((prev) => !prev);
@@ -27,7 +27,7 @@ function ReservationArea() {
 
   useEffect(() => {
     axios
-      .get(`http://${process.env.REACT_APP_API_URL}/member/${memberId}/reservation`, {
+      .get(`${process.env.REACT_APP_API_URL}/member/${memberId}/reservation`, {
         headers: headers,
       })
       .then((response) => {
