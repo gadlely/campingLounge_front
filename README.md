@@ -1,70 +1,57 @@
-# Getting Started with Create React App
+# 🌄 CampingLounge - Frontend (개인 파트)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+이 레포지토리는 팀 프로젝트 "CampingLounge"의 프론트엔드 중 제가 담당한 개인 구현 파트를 정리한 저장소입니다.
 
-## Available Scripts
+## 📚 프로젝트 소개
 
-In the project directory, you can run:
+**CampingLounge**는 사용자들이 캠핑장을 예약하고 리뷰를 공유하며 소통할 수 있는 캠핑 커뮤니티 기반 웹 서비스입니다. 본 저장소는 해당 프로젝트에서 제가 구현한 프론트엔드 기능을 중심으로 구성되어 있습니다.
 
-### `npm start`
+## 🔧 담당 기능 요약
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+| 기능 파트           | 설명                                          |
+|--------------------|---------------------------------------------|
+| 회원가입 / 로그인     | 백엔드 API 연동 및 입력 폼 제작, 비밀번호 유효성 검증 포함        |
+| 이메일 중복 확인      | 실시간 중복 확인을 위한 서버 요청 처리                         |
+| 사용자 마이페이지      | 사용자 정보 조회 및 수정 폼 구성                              |
+| 이미지 업로드         | 파일 선택 시 미리보기 처리 및 서버 업로드 연동                   |
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🌟 주요 구현 내용
 
-### `npm test`
+### 1. 회원가입 및 로그인
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- 사용자 회원가입 및 로그인 폼을 구성하고 각 입력 필드에 대한 유효성 검증을 구현했습니다.
+- 비밀번호는 길이 조건 및 특수문자 포함 여부를 기준으로 유효성을 판단했습니다.
+- 로그인/가입 성공 시 토큰 또는 사용자 정보를 저장하고 페이지 이동 처리했습니다.
 
-### `npm run build`
+### 2. 이메일 중복 확인
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- 회원가입 시 이메일을 입력하면 일정 시간 지연 후 서버에 중복 여부를 확인하는 요청을 보냈습니다.
+- 빠른 연속 입력에 대비해 debounce 처리 등을 적용하여 효율적으로 구현했습니다.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 3. 로그인 및 회원가입 요청 처리
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Axios를 사용하여 회원가입/로그인 API와 통신하고, 응답에 따라 페이지 흐름을 제어했습니다.
+- 백엔드와의 통신 흐름을 이해하고 프론트 단에서 직접 테스트하며 기능을 완성했습니다.
 
-### `npm run eject`
+### 4. 이미지 업로드 및 미리보기
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- 사용자 프로필 또는 게시물 이미지 업로드를 위한 파일 입력과 미리보기 기능을 구현했습니다.
+- 서버 업로드 후 응답으로 받은 이미지 경로를 사용자 데이터와 함께 서버에 제출하는 방식으로 구성했습니다.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## ⚙️ 기술 스택
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- JavaScript (ES6+)
+- React 18
+- Axios
+- HTML5 / CSS3
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## ✅ 기타 개발 내용
 
-## Learn More
+- API 연동 시 개발자 도구(F12)와 네트워크 탭을 활용하여 요청/응답을 실시간으로 검토하고 디버깅했습니다.
+- 프론트 개발과 동시에 백엔드 테스트를 병행하며 기능 점검을 직접 수행했습니다.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+> 본 저장소는 포트폴리오 제출용 개인 프론트엔드 구현 파트입니다. 
+> 전체 프로젝트는 팀원들과 함께한 [메인 저장소](https://github.com/tungasa200/CampingLounge)에서 확인하실 수 있습니다.
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
